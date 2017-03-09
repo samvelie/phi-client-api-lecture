@@ -13,6 +13,11 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controller: 'OtherController',
             controllerAs: 'oc'
         })
+        .when('/dogs', {
+            templateUrl: '/views/dogs.html',
+            controller: 'DogController',
+            controllerAs: 'dc'
+        })
         .otherwise({
             redirectTo: 'home'
         });

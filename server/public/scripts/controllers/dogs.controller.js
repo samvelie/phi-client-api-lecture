@@ -1,16 +1,14 @@
-myApp.controller('HomeController', ['$http', function($http) {
-  console.log('home controller running');
-
+myApp.controller('DogController', ['$http', function($http) {
   var self = this;
 
-  self.message = "Welcome to the Home View";
+  self.dog = {};
 
   var api_key = 'c131370934be7916dbc03da9ee196061';
   var baseURL = "http://api.petfinder.com/";
 
-  self.pet = {};
 
-  self.getRandomPet = function() {
+
+  self.getRandomDog = function() {
     // create a URL
     var query = baseURL + "pet.getRandom";
     query += "?key=" + api_key;
@@ -27,10 +25,11 @@ myApp.controller('HomeController', ['$http', function($http) {
     // make ajax request
     $http.jsonp(request).then(function(response) {
       console.log('response: ', response.data);
-      self.pet = response.data.petfinder.pet;
+      self.dog = response.data.petfinder.pet;
     });
 
     // when request is completed, put info on the DOM
   }
 
+    self.getRandomDog();
 }]);
